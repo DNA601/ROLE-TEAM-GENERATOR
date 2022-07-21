@@ -7,7 +7,7 @@ const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
 
 
-
+// set of questions
 const questionsManager = [{
         type: 'input',
         message: 'Managers Name',
@@ -50,7 +50,7 @@ const questionsEngineer = [{
 
     {
         type: 'input',
-        message: 'What is the enginners github?',
+        message: 'enginners github?',
         name: 'github',
     },
 
@@ -58,7 +58,7 @@ const questionsEngineer = [{
 ];
 const questionsIntern = [{
         type: 'input',
-        message: 'Engineers Name',
+        message: 'Interns Name',
         name: 'name',
     },
     {
@@ -68,22 +68,25 @@ const questionsIntern = [{
     },
     {
         type: 'input',
-        message: 'Engineers email',
+        message: 'intern email?',
         name: 'email',
     },
 
     {
         type: 'input',
-        message: 'school?',
+        message: 'Where did they attend school?',
         name: 'school',
     },
 ];
+let employees = []
 
 function startApp() {
 
+
+
     createManager()
 }
-let employees = [];
+
 
 function createManager() {
     inquirer.prompt(questionsManager)
@@ -94,35 +97,83 @@ function createManager() {
             employees.push(manager);
             //push each employee to employees array on line 86
             addTeamMember()
-
             console.log(data)
+
         }
     )
 }
+
+
+function createEngineer() {
+    inquirer.prompt(questionsEngineer)
+        .then(function(data) {
+            const engineer = new Engineer(data.name, data.id, data.email, data.github)
+            employees.push(engineer)
+            addTeamMember()
+        })
+}
+
+
+function createIntern() {
+    inquirer.prompt(questionsIntern)
+        .then(function(data) {
+            const intern = new Intern(data.name, data.id, data.email, data.school)
+            employees.push(intern)
+            addTeamMember()
+        })
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function addTeamMember() {
     inquirer.prompt([{
             type: 'list',
             message: 'next employee',
             name: 'nextEmployee',
-            choices: ['enginneer', 'intern', 'finish']
+            choices: ['engineer', 'intern', 'finish']
         }])
         .then(
             function(data) {
-                if (data.nextEmployee == 'engineer') {
-                    createEnginner()
-                } else if (data.nextEmployee == 'intern') {
+                if (data.nextEmployee === 'engineer') {
+                    createEngineer()
+                } else if (data.nextEmployee === 'intern') {
                     createIntern()
 
-                } else {
-                    writeToHtml();
+                } else if (data.nextEmployee === 'finish') {
+                    writeToHTML();
                 }
             }
         )
 }
+//This function will add or finish adding team members
+
+
+
+function writeToHTML() {
+    const filename = './dis/generateHTML.html'
+    const content = generateHTML(employees)
+
+    console.log(content)
+    fs.writeFile(filename, content, (err) => {
+        err ? console.log(err) : console.log('success')
+    })
+}
+
+
 
 
 function init() {
     startApp()
 }
-init()
+
+
+init();
