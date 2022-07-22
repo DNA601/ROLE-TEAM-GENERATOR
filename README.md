@@ -36,6 +36,7 @@ The .js files will generate an HTML file with your Team IDs.
 
 ## Walkthrough.
 
+https://youtu.be/C3ApXzn0KfM
 
 
 ## Owner
