@@ -50,3 +50,6 @@ David Navarrete Ayala
 
  ## Code Snippet
   ![img](/images/codeSnippet.png)
+
+# 
+This is a function that will continue to add employees. The user will be prompt with a list of add engineer or Intern once the manager questions are filled. The user can decide to add on or finish.
