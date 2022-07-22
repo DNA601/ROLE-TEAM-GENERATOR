@@ -97,7 +97,7 @@ function createManager() {
             employees.push(manager);
             //push each employee to employees array on line 86
             addTeamMember()
-            console.log(data)
+
 
         }
     )
@@ -125,15 +125,6 @@ function createIntern() {
 
 
 
-
-
-
-
-
-
-
-
-
 function addTeamMember() {
     inquirer.prompt([{
             type: 'list',
@@ -155,7 +146,6 @@ function addTeamMember() {
         )
 }
 //This function will add or finish adding team members
-
 
 
 function writeToHTML() {

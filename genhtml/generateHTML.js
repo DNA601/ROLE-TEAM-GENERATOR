@@ -2,6 +2,7 @@ function addOfficeNumber(index) {
     if (!index.officeNumber) {
         return ''
     } else {
+
         return `<li class="list-group-item">Office number: ${index.getOfficeNumber()}</li>`
     }
 }
@@ -10,7 +11,7 @@ function addGithub(index) {
     if (!index.github) {
         return ''
     } else {
-        return `<li class="list-group-item">GitHub: <a href="https://github.com/${index.getGithub()}" class="card-link">${index.getGithub()}</a></li>`
+        return `<li class="list-group-item">GitHub: <a href="https://github.com/${index.getGithub()}" class="card-link" target="_blank">${index.getGithub()}</a></li>`
     }
 }
 
